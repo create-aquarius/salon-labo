@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ゆとり高単価サロンラボ｜時間に追われず、良いお客様に選ばれるサロン経営へ</title>
+  <meta name="description" content="サロンオーナーのための月額制コミュニティ。サロン経営・AI活用・マーケティング・交流を毎月整え、時間に追われず良いお客様に選ばれる高単価サロン経営へ。" />
+  <style>
+    :root {
+      --bg: #fff7f8;
+      --paper: #fffdf9;
+      --paper2: #fff1f4;
+      --soft: #f7edf3;
+      --mint: #e9f3ea;
+      --main: #c87587;
+      --main2: #d98998;
+      --main-dark: #6b4a4f;
+      --accent: #e8b8c4;
+      --accent-light: #f8e4ea;
+      --gold: #b9975b;
+      --text: #2f2929;
+      --sub: #66585a;
+      --line: rgba(200, 117, 135, .24);
+      --shadow: 0 16px 42px rgba(107, 74, 79, .12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.92;
+      letter-spacing: .01em;
+      font-weight: 500;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+
+    .container { width: min(1080px, calc(100% - 36px)); margin: 0 auto; }
+    .wide { width: min(1240px, calc(100% - 36px)); margin: 0 auto; }
+
+    .header {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 66px;
+      padding: 0 18px 0 24px;
+      border-radius: 999px;
+      background: rgba(255, 253, 249, .9);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(107, 74, 79, .10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      pointer-events: auto;
+    }
+
+    .logo {
+      color: var(--main-dark);
+      font-weight: 900;
+      letter-spacing: .08em;
+      white-space: nowrap;
+      font-size: 15px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--sub);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav a:hover { color: var(--main-dark); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 20px;
+      border-radius: 999px;
+      color: #fff !important;
+      background: linear-gradient(135deg, #b85f75, #d98998);
+      box-shadow: 0 10px 24px rgba(184, 95, 117, .26);
+      font-weight: 900;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 128px 0 78px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255, 247, 248, .98) 0%, rgba(255, 247, 248, .92) 43%, rgba(255, 247, 248, .24) 100%),
+        url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1800&q=82") center right/cover;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(232, 184, 196, .42), transparent 30%),
+        radial-gradient(circle at 76% 82%, rgba(233, 243, 234, .54), transparent 34%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 730px;
+      padding-top: 58px;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 249, .9);
+      color: var(--main-dark);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--main2);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--text);
+      font-weight: 900;
+      letter-spacing: .01em;
+    }
+
+    h1 {
+      margin-top: 28px;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1.18;
+      letter-spacing: .02em;
+    }
+
+    h1 span { display: block; color: #9d4f62; }
+
+    .hero-subtitle {
+      margin-top: 30px;
+      font-size: clamp(25px, 3vw, 38px);
+      line-height: 1.42;
+      color: var(--main-dark);
+      font-weight: 900;
+    }
+
+    .hero-text {
+      margin-top: 24px;
+      color: var(--sub);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 2;
+      font-weight: 700;
+    }
+
+    .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255, 253, 249, .9);
+      border: 1px solid var(--line);
+      color: var(--main-dark);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .hero-cta {
+      width: min(100%, 720px);
+      margin-top: 40px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 74px;
+      padding: 18px 32px;
+      border-radius: 18px;
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 950;
+      line-height: 1.35;
+      text-align: center;
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, #b85f75 0%, #d98998 100%);
+      border: 2px solid rgba(255, 255, 255, .42);
+      box-shadow: 0 18px 44px rgba(184, 95, 117, .34);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 56px rgba(184, 95, 117, .42);
+    }
+
+    .btn-sub {
+      color: var(--main-dark);
+      background: rgba(255, 253, 249, .92);
+      border: 2px solid rgba(200, 117, 135, .30);
+      font-size: 18px;
+      min-height: 60px;
+      box-shadow: 0 10px 24px rgba(107, 74, 79, .07);
+    }
+
+    .section { padding: 96px 0; position: relative; }
+    .section.white { background: var(--paper); }
+    .section.soft { background: linear-gradient(180deg, #fff1f4 0%, #f7edf3 100%); }
+    .section.deep { background: linear-gradient(135deg, #b85f75, #d98998); color: #fff; }
+
+    .section-head { max-width: 900px; margin: 0 auto 56px; text-align: center; }
+
+    h2 { margin-top: 20px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.36; }
+
+    .lead {
+      margin-top: 22px;
+      color: var(--sub);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.95;
+      font-weight: 700;
+    }
+
+    .problem-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+    .problem-card {
+      padding: 26px 28px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(107, 74, 79, .06);
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 16px;
+      align-items: start;
+      font-size: 18px;
+      line-height: 1.8;
+      font-weight: 750;
+      color: var(--text);
+    }
+
+    .check {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-light);
+      color: #b85f75;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .statement {
+      margin-top: 42px;
+      padding: 40px 30px;
+      border-radius: 28px;
+      background: #fff;
+      border: 2px solid var(--line);
+      box-shadow: var(--shadow);
+      text-align: center;
+      color: #9d4f62;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.55;
+      font-weight: 900;
+    }
+
+    .split { display: grid; grid-template-columns: .95fr 1.05fr; gap: 54px; align-items: center; }
+
+    .photo-box {
+      min-height: 520px;
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.28)),
+        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=82") center/cover;
+      border: 7px solid rgba(255,255,255,.86);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-box::after,
+    .profile-photo::after {
+      content: "講師写真";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(255,253,249,.86);
+      color: var(--main-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .copy-block p { color: var(--sub); font-size: 18px; line-height: 2; font-weight: 650; }
+    .copy-block p + p { margin-top: 20px; }
+    .marker { font-weight: 900; color: #9d4f62; background: linear-gradient(transparent 62%, rgba(232,184,196,.46) 62%); }
+
+    .concept-box {
+      padding: 50px;
+      border-radius: 34px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .concept-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .concept-item {
+      padding: 28px;
+      border-radius: 24px;
+      background: #fff7f8;
+      border: 1px solid var(--line);
+    }
+
+    .concept-item .num { color: #b85f75; font-weight: 900; font-size: 14px; letter-spacing: .12em; }
+    .concept-item h3 { margin-top: 8px; font-size: 24px; line-height: 1.45; color: var(--main-dark); }
+    .concept-item p { margin-top: 12px; color: var(--sub); font-size: 16.5px; line-height: 1.85; font-weight: 700; }
+
+    .program-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    .program-card {
+      padding: 34px;
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(107, 74, 79, .06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(180deg, #d98998, #e8b8c4, #b9975b);
+    }
+
+    .program-label { color: #b85f75; font-weight: 900; letter-spacing: .12em; font-size: 14px; }
+    .program-card h3 { margin-top: 10px; color: var(--main-dark); font-size: clamp(23px, 2.6vw, 31px); line-height: 1.45; }
+    .program-card p { margin-top: 15px; color: var(--sub); font-size: 17px; line-height: 1.9; font-weight: 700; }
+
+    .ai-panel {
+      margin-top: 66px;
+      padding: 44px;
+      border-radius: 34px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .ai-panel .section-head { margin-bottom: 30px; }
+
+    .ai-note {
+      max-width: 900px;
+      margin: 0 auto 34px;
+      padding: 24px 28px;
+      border-radius: 22px;
+      background: #fff7f8;
+      border: 2px solid var(--line);
+      color: var(--sub);
+      font-size: 18px;
+      line-height: 1.95;
+      font-weight: 800;
+    }
+
+    .ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    .ai-item {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #fff7f8 100%);
+      border: 1px solid var(--line);
+      color: var(--main-dark);
+      font-weight: 900;
+      line-height: 1.55;
+      box-shadow: 0 8px 18px rgba(107, 74, 79, .05);
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: .42fr .58fr;
+      gap: 46px;
+      align-items: center;
+      padding: 48px;
+      border-radius: 36px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-photo {
+      min-height: 500px;
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.28)),
+        url("./IMG_3954.JPG") center 28%/cover;
+      border: 7px solid rgba(255,255,255,.88);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(107, 74, 79, .12);
+    }
+
+    .profile-name { margin-top: 16px; font-size: clamp(40px, 5vw, 64px); line-height: 1.15; color: var(--main-dark); }
+
+    .profile-title {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 16px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: #9d4f62;
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .profile-text { margin-top: 28px; }
+    .profile-text p { color: var(--sub); font-size: 18px; line-height: 1.95; font-weight: 700; }
+    .profile-text p + p { margin-top: 18px; }
+
+    .price-card {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 58px 50px;
+      border-radius: 34px;
+      background: #fff;
+      border: 3px solid rgba(200, 117, 135, .30);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .price-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: #9d4f62;
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .price {
+      margin-top: 28px;
+      color: #b85f75;
+      font-size: clamp(70px, 11vw, 124px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      font-weight: 950;
+    }
+
+    .price small {
+      display: block;
+      margin-top: 12px;
+      color: var(--main-dark);
+      font-size: clamp(21px, 2.8vw, 30px);
+      letter-spacing: .02em;
+      font-weight: 900;
+    }
+
+    .included { margin: 42px auto 0; padding: 0; max-width: 720px; display: grid; gap: 12px; text-align: left; }
+
+    .included li {
+      list-style: none;
+      padding: 17px 20px;
+      border-radius: 16px;
+      background: #fff7f8;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .included li::before { content: "✓"; color: #b85f75; font-weight: 900; margin-right: 10px; }
+
+    .price-cta { margin: 44px auto 0; display: grid; max-width: 780px; }
+    .price-cta .btn { width: 100%; min-height: 88px; }
+
+    .faq { max-width: 920px; margin: 0 auto; display: grid; gap: 16px; }
+
+    details {
+      padding: 24px 28px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 24px rgba(107, 74, 79, .05);
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      color: var(--main-dark);
+      font-weight: 900;
+      font-size: 18px;
+      padding-right: 34px;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 0; top: 0; color: #b85f75; font-size: 28px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 14px; color: var(--sub); font-size: 17px; line-height: 1.9; font-weight: 700; }
+
+    .final-cta {
+      text-align: center;
+      padding: 112px 0;
+      background:
+        radial-gradient(circle at 16% 10%, rgba(255,255,255,.20), transparent 30%),
+        linear-gradient(135deg, #b85f75 0%, #d98998 100%);
+      color: #fff;
+    }
+
+    .final-cta h2 { color: #fff; font-size: clamp(36px, 5vw, 64px); }
+    .final-cta .lead { max-width: 900px; margin-left: auto; margin-right: auto; color: #fff; font-weight: 800; }
+    .final-cta .label { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.38); color: #fff; }
+    .final-cta .label::before { background: #fff; }
+    .final-cta .btn-primary { background: #fff; color: #b85f75; border: 3px solid rgba(255,255,255,.72); box-shadow: 0 20px 48px rgba(107, 74, 79, .24); }
+
+    .footer { padding: 34px 0; background: var(--paper); text-align: center; color: var(--sub); font-size: 13px; font-weight: 700; }
+    .sp { display: none; }
+
+    @media (max-width: 920px) {
+      .nav { display: none; }
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(255,247,248,.97) 0%, rgba(255,247,248,.91) 54%, rgba(255,247,248,.64) 100%),
+          url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=82") center/cover;
+      }
+      .hero-content { max-width: 100%; }
+      .problem-list, .split, .concept-grid, .program-grid, .profile { grid-template-columns: 1fr; }
+      .ai-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-box, .profile-photo { min-height: 390px; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 17px; line-height: 1.85; }
+      .container, .wide { width: min(100% - 28px, 1080px); }
+      .header { top: 10px; }
+      .header-inner { min-height: 58px; padding: 0 18px; }
+      .logo { font-size: 13px; }
+      .hero { padding: 100px 0 58px; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 31px; }
+      .hero-subtitle { font-size: 24px; }
+      .hero-text, .lead, .copy-block p, .profile-text p, .program-card p, .problem-card, .included li, .ai-note { font-size: 17px; }
+      .btn { min-height: 82px; font-size: 21px; padding: 18px 16px; }
+      .btn-sub { min-height: 62px; font-size: 17px; }
+      .section { padding: 70px 0; }
+      .problem-list, .program-grid, .ai-grid { grid-template-columns: 1fr; }
+      .concept-box, .ai-panel, .profile, .price-card { padding: 30px 22px; }
+      .concept-item, .program-card { padding: 26px 22px; }
+      .photo-box, .profile-photo { min-height: 330px; }
+      .price { font-size: 70px; }
+      .sp { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="#top" class="logo">ゆとり高単価サロンラボ</a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <a href="#problem">お悩み</a>
+        <a href="#about">ラボとは</a>
+        <a href="#program">内容</a>
+        <a href="#profile">講師</a>
+        <a href="#price">参加費</a>
+        <a href="https://buy.stripe.com/14A14o5yC06U1sLgFq6kg02" class="nav-cta" target="_blank" rel="noopener">参加する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="label">サロンオーナー向け実践コミュニティ</div>
+          <h1>時間に追われず、<span>良いお客様に選ばれる</span>サロン経営へ。</h1>
+          <p class="hero-subtitle">ゆとり高単価サロンラボ</p>
+          <p class="hero-text">
+            毎月の集客、LINE配信、Instagram投稿、キャンペーン告知、リピート施策。<br />
+            ひとりで考え続けるサロン経営を、もう終わりにしませんか？
+          </p>
+          <div class="hero-tags">
+            <span class="tag">月2回の講座</span>
+            <span class="tag">オンライン交流会</span>
+            <span class="tag">リアル交流会あり</span>
+            <span class="tag">AI活用も毎月アップデート</span>
+          </div>
+          <div class="hero-cta">
+            <a href="https://buy.stripe.com/14A14o5yC06U1sLgFq6kg02" class="btn btn-primary" target="_blank" rel="noopener">ゆとり高単価サロンラボに参加する</a>
+            <a href="#program" class="btn btn-sub">まずは内容を見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section white">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">こんなお悩みはありませんか？</div>
+          <h2>頑張っているのに、<br class="sp" />サロン経営が軽くならない。</h2>
+          <p class="lead">必要なのは、もっと頑張ることではなく、毎月の動きを整える場所かもしれません。</p>
+        </div>
+        <div class="problem-list">
+          <div class="problem-card"><span class="check">✓</span><p>毎月、何を発信すればいいか分からない。</p></div>
+          <div class="problem-card"><span class="check">✓</span><p>LINEを送ろうと思っても、文章を考えるだけで時間がかかる。</p></div>
+          <div class="problem-card"><span class="check">✓</span><p>キャンペーンをしても、割引頼みになってしまう。</p></div>
+          <div class="problem-card"><span class="check">✓</span><p>新規集客ばかりに追われて、リピートや紹介につながらない。</p></div>
+          <div class="problem-card"><span class="check">✓</span><p>単価を上げたいけれど、お客様が離れそうで怖い。</p></div>
+          <div class="problem-card"><span class="check">✓</span><p>AIが便利そうなのは分かるけれど、サロン経営にどう使えばいいか分からない。</p></div>
+        </div>
+        <div class="statement">サロン経営は、ひとりで考え続けるほど苦しくなります。</div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="wide split">
+        <div class="photo-box" aria-label="女性向けサロンイメージ写真"></div>
+        <div class="copy-block">
+          <div class="label">なぜ必要なのか</div>
+          <h2>AIを学ぶ場所ではなく、<br />サロン経営を整える場所。</h2>
+          <p class="lead">
+            最近はAIの登場で、発信や文章作成は以前より早くできるようになりました。<br />
+            ただ、AIを使えば自動的に売上が上がるわけではありません。
+          </p>
+          <p>AIに何を作らせるか。どんなお客様に向けて伝えるか。どんな導線につなげるか。どんなメニューやキャンペーンと組み合わせるか。</p>
+          <p>ここがズレると、AIを使っても「それっぽい文章」が増えるだけで、サロン経営の前進にはつながりません。</p>
+          <p>だからこそ、必要なのは<span class="marker">サロン経営を整える中でAIも使えるようになる場所</span>です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section white">
+      <div class="container">
+        <div class="concept-box">
+          <div class="label">ゆとり高単価サロンラボとは？</div>
+          <h2>時間にも心にも余裕を持てる、<br />高単価サロン経営をつくる月額コミュニティ。</h2>
+          <p class="lead">
+            無理な値引きに頼らず、あなたの価値を分かってくれるお客様に選ばれ、リピートや紹介が自然に生まれる流れを毎月整えていきます。
+          </p>
+          <div class="concept-grid">
+            <div class="concept-item">
+              <div class="num">POINT 01</div>
+              <h3>集客を整える</h3>
+              <p>Instagram、LINE、キャンペーン告知など、サロンの魅力が伝わる発信へ。</p>
+            </div>
+            <div class="concept-item">
+              <div class="num">POINT 02</div>
+              <h3>リピートを整える</h3>
+              <p>新規集客だけに追われず、長く通われる関係づくりを実践します。</p>
+            </div>
+            <div class="concept-item">
+              <div class="num">POINT 03</div>
+              <h3>単価を整える</h3>
+              <p>安さではなく価値で選ばれる、メニューや見せ方を見直します。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="program" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">提供内容</div>
+          <h2>毎月、学び・実践・つながりを<br />バランスよく整えます。</h2>
+        </div>
+        <div class="program-grid">
+          <div class="program-card">
+            <div class="program-label">CONTENTS 01</div>
+            <h3>月1回：サロン経営実践セミナー｜120分</h3>
+            <p>現役サロンオーナーが、リピート率改善、LINE配信、キャンペーン設計、高単価メニューの見せ方、安売りに頼らない集客などを現場目線でお伝えします。</p>
+          </div>
+          <div class="program-card">
+            <div class="program-label">CONTENTS 02</div>
+            <h3>月1回：AI活用×サロンマーケティング特別講座｜60分</h3>
+            <p>毎月、最新のAI活用法やサロンマーケティングの考え方を学びながら、集客・リピート・単価アップ・発信導線など、サロン経営に役立つ実践的な視点を身につけていきます。</p>
+          </div>
+          <div class="program-card">
+            <div class="program-label">CONTENTS 03</div>
+            <h3>月1回：オンライン交流会</h3>
+            <p>参加者同士で近況や悩みを共有しながら、サロン経営のヒントや気づきを得られる場をつくります。</p>
+          </div>
+          <div class="program-card">
+            <div class="program-label">CONTENTS 04</div>
+            <h3>2か月に1回：リアル交流会</h3>
+            <p>同じようにサロン経営に向き合う仲間と直接会い、相談・情報交換・つながりを深められる時間です。</p>
+          </div>
+        </div>
+
+        <div class="ai-panel">
+          <div class="section-head">
+            <div class="label">AI活用の一例</div>
+            <h2>AIで広がるサロン経営の可能性。</h2>
+          </div>
+          <div class="ai-note">
+            AIでできることは、これからさらに増えていきます。ここでは、現時点でサロン経営に取り入れやすい活用例を紹介します。最新のAI活用法は、毎月の講座内でその都度アップデートしていきます。
+          </div>
+          <div class="ai-grid">
+            <div class="ai-item">LINE配信文の作成・改善</div>
+            <div class="ai-item">Instagram投稿案の作成</div>
+            <div class="ai-item">キャンペーン告知文の作成</div>
+            <div class="ai-item">メニュー紹介文の整理</div>
+            <div class="ai-item">口コミ返信・お礼文の作成</div>
+            <div class="ai-item">季節ごとの企画出し</div>
+            <div class="ai-item">お客様フォロー文の作成</div>
+            <div class="ai-item">サロンの強みの言語化</div>
+            <div class="ai-item">今後増えるAI活用にも対応</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="section white">
+      <div class="container">
+        <div class="profile">
+          <div class="profile-photo" aria-label="宮下ナオさんプロフィール写真"></div>
+          <div>
+            <div class="label">講師紹介</div>
+            <h2 class="profile-name">宮下 ナオ</h2>
+            <div class="profile-title">高単価サロンコーチ</div>
+            <div class="profile-text">
+              <p>エステサロン20年の経営実績を持つサロンオーナー。</p>
+              <p>長年の現場経験をもとに、サロン経営における「売上に繋がらない無駄な作業」を見直し、時間に追われず、良いお客様に選ばれる高単価サロンづくりをサポートしている。</p>
+              <p>また、AIツールを実際のサロン経営に落とし込む指導にも定評があり、一人ひとりのITスキルや理解度に合わせた丁寧なセッションが好評。</p>
+              <p>「AIに苦手意識があったが、自分のビジネスでどう使えばいいか明確になった」など、多くの個人事業主や経営者から信頼を得ている。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="price" class="section soft">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">参加費</div>
+          <h2>月額11,000円（税込）</h2>
+          <p class="lead">外部セミナーに1回参加するほどの金額で、毎月サロン経営・AI活用・交流の機会を得られます。</p>
+        </div>
+        <div class="price-card">
+          <div class="price-label">ゆとり高単価サロンラボ</div>
+          <div class="price">11,000<small>円 / 月（税込）</small></div>
+          <ul class="included">
+            <li>月1回のサロン経営実践セミナー</li>
+            <li>月1回のAI活用×サロンマーケティング特別講座</li>
+            <li>月1回のオンライン交流会</li>
+            <li>2か月に1回のリアル交流会</li>
+            <li>講座アーカイブ視聴</li>
+          </ul>
+          <div class="price-cta">
+            <a class="btn btn-primary" href="https://buy.stripe.com/14A14o5yC06U1sLgFq6kg02" target="_blank" rel="noopener">ゆとり高単価サロンラボに参加する</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">よくある質問</div>
+          <h2>ご参加前の疑問にお答えします。</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>AIに詳しくなくても参加できますか？</summary>
+            <p>はい、参加できます。このラボは、AIに詳しい人のための場所ではありません。サロン経営に必要な発信や文章作成を、AIも使いながらラクにしていくための場所です。</p>
+          </details>
+          <details>
+            <summary>サロン経営を始めたばかりでも参加できますか？</summary>
+            <p>はい、参加できます。これからサロン経営を整えていきたい方にも役立つ内容です。ただし、学ぶだけでなく、実践することを前提にしたコミュニティです。</p>
+          </details>
+          <details>
+            <summary>リアル交流会に参加できなくても大丈夫ですか？</summary>
+            <p>はい、大丈夫です。オンライン講座やオンライン交流会だけでもご参加いただけます。リアル交流会は、参加できるタイミングでご活用ください。</p>
+          </details>
+          <details>
+            <summary>どんなサロンが対象ですか？</summary>
+            <p>エステ、整体、リラクゼーション、ネイル、美容系サロン、自宅サロンなど、ひとりサロン・小規模サロンのオーナーを主な対象にしています。</p>
+          </details>
+          <details>
+            <summary>途中で退会できますか？</summary>
+            <p>はい、いつでも退会可能です。詳細な手続きはお申し込み後にご案内します。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="entry" class="final-cta">
+      <div class="container">
+        <div class="label">最後に</div>
+        <h2>ひとりで頑張るサロン経営から、<br />毎月整えるサロン経営へ。</h2>
+        <p class="lead">
+          無理に売り込むのではなく、あなたの価値を分かってくれる良いお客様に選ばれるサロンへ。<br />
+          時間に追われる経営ではなく、余裕を持って続けられるサロン経営へ。
+        </p>
+        <div class="price-cta">
+          <a class="btn btn-primary" href="https://buy.stripe.com/14A14o5yC06U1sLgFq6kg02" target="_blank" rel="noopener">ゆとり高単価サロンラボに参加する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© ゆとり高単価サロンラボ</p>
+    </div>
+  </footer>
+</body>
+</html>
